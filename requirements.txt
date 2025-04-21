@@ -1,7 +1,7 @@
 langchain
 langgraph
-openai
 tavily-python
 python-dotenv
 langchain-community
-
+together
+openai
