@@ -1,3 +1,4 @@
+
 # 🧠 AI Agent-Based Deep Research
 
 This project is a dual-agent research system built using **LangGraph** and **LangChain** with **Together.ai** as the LLM provider. It is designed to accept a query, perform live web research using the **Tavily Search API**, and generate a polished final answer.
@@ -11,7 +12,15 @@ This project is a dual-agent research system built using **LangGraph** and **Lan
 - 🌐 Uses LangGraph for agent orchestration
 - 🤖 Together.ai for LLM-based reasoning
 - ✅ Clean modular codebase (easy to extend)
-- 📄 CLI interface for demo/testing
+- 🧪 CLI interface and 🌐 Streamlit UI for testing
+
+---
+
+## 🌐 Live Demo
+
+Test the app directly in your browser:
+
+👉 [**Click here to run the Streamlit app**](https://deep-research-ai-jqqhbf7ggrt2x3tsse2yks.streamlit.app/)
 
 ---
 
@@ -22,11 +31,15 @@ deep-research-ai/
 │
 ├── agents/
 │   ├── research_agent.py       # Gathers information from Tavily Search
-│   └── answer_agent.py         # Compiles and summarizes the final answer
+│   ├── answer_agent.py         # Compiles and summarizes the final answer
 │
-├── prompt_template.py          # Templates used by agents for LLM prompting
-├── langgraph_flow.py           # Defines the LangGraph state graph and agent transitions
-├── test.py                     # CLI entrypoint to run the full pipeline
+├── app/
+│   └── streamlit_app.py        # Streamlit frontend for user input/output
+│
+├── langgraph_flow.py           # LangGraph state machine and pipeline runner
+├── prompt_templates.py         # Templates used by agents for prompting
+├── .env                        # Handles environment variables
+├── test.py                     # CLI entry point to run the full pipeline
 ├── requirements.txt            # Python dependencies
 └── README.md                   # Project overview and documentation
 ```
@@ -35,26 +48,37 @@ deep-research-ai/
 
 ## 📦 Dependencies
 
-Install the following dependencies using pip. They are listed in `requirements.txt`.
+Install the following dependencies using pip. These are already listed in `requirements.txt`.
 
 ```text
+streamlit
 langchain
 langgraph
-together
+langchain_together
 tavily-python
+python-dotenv
+langchain-community
 openai
+
 ```
 
-You can install all dependencies using:
+Install all with:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-> 🔐 Make sure to set your API keys for Together.ai and Tavily:
-```bash
-export TOGETHER_API_KEY=your_together_api_key
-export TAVILY_API_KEY=your_tavily_api_key
+---
+
+## 🔐 Environment Setup
+
+Set your API keys for Together.ai and Tavily. :
+
+ Use `.env` file
+Create a file named `.env` and add:
+```
+TOGETHER_API_KEY=your_together_api_key
+TAVILY_API_KEY=your_tavily_api_key
 ```
 
 ---
@@ -64,22 +88,21 @@ export TAVILY_API_KEY=your_tavily_api_key
 ### 🧠 Agents
 
 - **Research Agent**:
-  - Uses Tavily Search API to search the web.
-  - Extracts and formats raw content for the Answer Agent.
+  - Uses Tavily API to search the web.
+  - Extracts and formats relevant data.
 
 - **Answer Agent**:
   - Uses Together.ai LLM to read search results.
-  - Generates a complete and structured answer.
+  - Drafts a final, comprehensive response.
 
 ### 🔄 LangGraph Flow
 
-LangGraph defines a state machine with the following flow:
+LangGraph organizes the process into a state machine with the following steps:
 
-1. Start with a `query`
-2. Pass query to `research_agent`
-3. Get search results
-4. Pass results to `answer_agent`
-5. Return final summarized answer
+1. Accept user query
+2. Use `research_agent` to get web data
+3. Use `answer_agent` to analyze and summarize
+4. Return a refined answer
 
 ---
 
@@ -92,39 +115,37 @@ git clone https://github.com/Aamir-Lone/deep-research-ai.git
 cd deep-research-ai
 ```
 
-### 2. Setup Python Virtual Environment (optional but recommended)
+### 2. (Optional) Create and Activate Virtual Environment
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # on Unix
-venv\Scripts\activate     # on Windows
+source venv/bin/activate       # On Unix/macOS
+venv\Scripts\activate        # On Windows
 ```
 
-### 3. Install Requirements
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Set Environment Variables
+### 4. Configure Environment Variables
+
+create a `.env` file 
+
+### 5. Run via Streamlit (Recommended)
 
 ```bash
-export TOGETHER_API_KEY=your_together_api_key
-export TAVILY_API_KEY=your_tavily_api_key
+streamlit run app/streamlit_app.py
 ```
 
-### 5. Run the System
-
-Use the `test.py` script to test the pipeline:
+### 6. Run via CLI (Optional)
 
 ```bash
 python test.py
 ```
 
-You’ll be prompted to enter a research question. The system will:
-1. Search the web
-2. Summarize findings
-3. Display the final answer
+You’ll be prompted to enter a query in the terminal and see results printed after research.
 
 ---
 
@@ -143,10 +164,14 @@ What are the recent use cases of Generative AI in healthcare?
 4. Automation of Clinical Documentation
 5. Drug Discovery
 6. Personalized Medicine
-
 ```
 
 ---
 
+## 🧑‍💻 Author
 
+**Aamir Lone**  
+📫 [View Live Demo](https://deep-research-ai-jqqhbf7ggrt2x3tsse2yks.streamlit.app/)
+
+---
 

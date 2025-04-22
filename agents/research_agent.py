@@ -1,4 +1,4 @@
-# agents/research_agent.py
+
 
 from langchain.agents import initialize_agent, AgentType
 from langchain_community.tools.tavily_search import TavilySearchResults
@@ -14,7 +14,7 @@ def get_research_agent():
     tavily_tool = TavilySearchResults(k=5)
     tools = [tavily_tool]
 
-    # Use Together's LLM wrapper from LangChain
+
     llm = ChatTogether(
         model="mistralai/Mixtral-8x7B-Instruct-v0.1",
         temperature=0.7,

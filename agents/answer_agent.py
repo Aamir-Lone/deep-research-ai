@@ -1,7 +1,5 @@
 
 
-# agents/answer_agent.py
-
 import os
 import requests
 from dotenv import load_dotenv
@@ -14,7 +12,7 @@ from typing import Optional, List
 load_dotenv()
 
 class TogetherLLM(LLM):
-    model: str = "mistralai/Mixtral-8x7B-Instruct-v0.1"  # ✅ updated to serverless-supported model
+    model: str = "mistralai/Mixtral-8x7B-Instruct-v0.1"  
     api_url: str = "https://api.together.ai/v1/chat/completions"
     api_key: str = os.getenv("TOGETHER_API_KEY")
 
