@@ -5,3 +5,5 @@ python-dotenv
 langchain-community
 together
 openai
+streamlit
+langchain_together
