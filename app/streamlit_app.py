@@ -2,12 +2,13 @@
 
 import sys
 import os
+from langgraph_flow import run_graph
+import streamlit as st
 
 # Append the root project directory to sys.path to access langgraph_flow
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from langgraph_flow import run_graph
-import streamlit as st
+
 
 st.set_page_config(page_title="AI Research Agent", layout="centered")
 
