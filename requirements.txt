@@ -1,10 +1,10 @@
-langchain
+langchain<0.4.0
 langgraph
 tavily-python
 python-dotenv
-langchain-community
+langchain-community<0.4.0
 together
 openai
 streamlit
-langchain_together
-langchain-core
+langchain_together<0.4.0
+langchain-core<0.4.0
