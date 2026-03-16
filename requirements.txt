@@ -7,3 +7,4 @@ together
 openai
 streamlit
 langchain_together
+langchain-core
