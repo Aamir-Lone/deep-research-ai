@@ -28,6 +28,6 @@ def get_research_agent():
     agent = create_react_agent(llm, tools, prompt)
 
     # Create an agent executor by passing in the agent and tools
-    agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+    agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True, handle_parsing_errors=True)
 
     return agent_executor
